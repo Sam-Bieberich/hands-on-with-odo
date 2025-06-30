@@ -565,17 +565,17 @@ To do this challenge:
 0. Make sure you copy over the scripts and are in your `/gpfs/wolf2/olcf/PROJECT_ID/scratch/${USER}/qml_test` directory:
 
     ```bash
-    $ cd /gpfs/wolf2/olcf/PROJECT_ID/scratch/${USER}/
-    $ mkdir qml_test
-    $ cd qml_test
-    $ cp ~/hands-on-with-odo/challenges/Python_QML_Basics/qml.py ./qml.py
-    $ cp ~/hands-on-with-odo/challenges/Python_QML_Basics/submit_qml.sbatch ./submit_qml.sbatch
+    cd /gpfs/wolf2/olcf/PROJECT_ID/scratch/${USER}/
+    mkdir qml_test
+    cd qml_test
+    cp ~/hands-on-with-odo/challenges/Python_QML_Basics/qml.py ./qml.py
+    cp ~/hands-on-with-odo/challenges/Python_QML_Basics/submit_qml.sbatch ./submit_qml.sbatch
     ```
 
 1. Use your favorite editor to change `-n` in `submit_qml.sbatch` to distribute the network over a specific number of tasks (pick an integer in the range from 1 to 8):
 
     ```bash
-    $ vi submit_qml.sbatch
+    vi submit_qml.sbatch
     ```
 
     The default `srun` looks like this (note, you'll ONLY have to change the `-n` value):
@@ -587,7 +587,7 @@ To do this challenge:
 2. Submit a job:
 
     ```bash
-    $ sbatch --export=NONE submit_qml.sbatch
+    sbatch --export=NONE submit_qml.sbatch
     ```
 
 3. Look at the statistics printed in your `qml_basics-<JOB_ID>.out` file after the job completes to see the job stats and output. The line you should look for is this message at the bottom of the file:
