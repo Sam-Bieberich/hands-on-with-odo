@@ -21,9 +21,9 @@ First, we will unload all the current modules that you may have previously loade
 Assuming you cloned the repository in your home directory:
 
 ```bash
-$ cd ~/hands-on-with-odo/challenges/Python_QML_Basics
-$ source ~/hands-on-with-odo/misc_scripts/deactivate_envs.sh
-$ module reset
+cd ~/hands-on-with-odo/challenges/Python_QML_Basics
+source ~/hands-on-with-odo/misc_scripts/deactivate_envs.sh
+module reset
 ```
 
 The `source deactivate_envs.sh` command is only necessary if you already have existing conda environments active.
@@ -32,24 +32,24 @@ The script unloads all of your previously activated conda environments, and no h
 Next, we will load the GNU compiler module (most Python packages assume GCC), the GPU module:
 
 ```bash
-$ module load PrgEnv-gnu/8.6.0 
-$ module load rocm/6.1.3
-$ module load craype-accel-amd-gfx90a
-$ module load miniforge3
+module load PrgEnv-gnu/8.6.0 
+module load rocm/6.1.3
+module load craype-accel-amd-gfx90a
+module load miniforge3
 ```
 
 We loaded the "base" conda environment, but we need to activate a pre-built conda environment that has PennyLane and PyTorch.
 Due to the specific nature of conda on Odo, we will be using `source activate` instead of `conda activate` to activate our new environment:
 
 ```bash
-$ source activate /gpfs/wolf2/olcf/stf007/world-shared/9b8/crashcourse_envs/qml-odo
+source activate /gpfs/wolf2/olcf/stf007/world-shared/9b8/crashcourse_envs/qml-odo
 ```
 
 The path to the environment should now be displayed in "( )" at the beginning of your terminal lines, which indicates that you are currently using that specific conda environment.
 If you check with `which python3`, you should see that you're properly in the new environment:
 
 ```bash
-$ which python3
+which python3
 /gpfs/wolf2/olcf/stf007/world-shared/9b8/crashcourse_envs/qml-odo/bin/python3
 ```
 
