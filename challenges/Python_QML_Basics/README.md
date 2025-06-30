@@ -554,7 +554,7 @@ if __name__ == "__main__":
     setup(rank, world_size)
 ```
 
-Thanks for taking the deep dive into the code, now to tackle the challenge itself!
+Thanks for taking the deep dive into the code. Now to tackle the challenge itself!
 
 ## Running the Challenge
 
@@ -565,14 +565,14 @@ To do this challenge:
 0. Make sure you copy over the scripts and are in your `/gpfs/wolf2/olcf/PROJECT_ID/scratch/${USER}/qml_test` directory:
 
     ```bash
-    cd /gpfs/wolf2/olcf/PROJECT_ID/scratch/${USER}/
+    cd /gpfs/wolf2/olcf/trn039/scratch/${USER}/
     mkdir qml_test
     cd qml_test
     cp ~/hands-on-with-odo/challenges/Python_QML_Basics/qml.py ./qml.py
     cp ~/hands-on-with-odo/challenges/Python_QML_Basics/submit_qml.sbatch ./submit_qml.sbatch
     ```
 
-1. Use your favorite editor to change `-n` in `submit_qml.sbatch` to distribute the network over a specific number of tasks (pick an integer in the range from 1 to 8):
+1. Use your favorite editor to change `-N` in `submit_qml.sbatch` to distribute the network over a specific number of tasks (pick an integer in the range from 1 to 8):
 
     ```bash
     vi submit_qml.sbatch
@@ -638,7 +638,7 @@ git clone -b v0.41.0 https://github.com/PennyLaneAI/pennylane-lightning.git
 cd pennylane-lightning
 sed -i -e 's/RelWithDebInfo/Release/g' setup.py # Force Release build for better performance
 
-# Install dependencies (will also install PennyLaneLightning 0.41.0 w/ Lightning_qubit)
+# Install dependencies (will also install PennyLaneLightning 0.41.0 with Lightning_qubit)
 pip install pennylane==0.41.0 pennylane_lightning==0.41.0 --no-cache-dir 
 
 # Install (but skip the compilation step for) Lightning-Qubit
