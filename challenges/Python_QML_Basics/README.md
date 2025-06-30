@@ -572,7 +572,7 @@ To do this challenge:
     cp ~/hands-on-with-odo/challenges/Python_QML_Basics/submit_qml.sbatch ./submit_qml.sbatch
     ```
 
-1. Use your favorite editor to change `-N` in `submit_qml.sbatch` to distribute the network over a specific number of tasks (pick an integer in the range from 1 to 8):
+1. Use your favorite editor to change the integer following`-n` in `submit_qml.sbatch` to distribute the network over a specific number of tasks (pick an integer in the range from 1 to 8):
 
     ```bash
     vi submit_qml.sbatch
