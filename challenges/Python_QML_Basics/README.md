@@ -527,9 +527,9 @@ Once the data is in the correct format, we start the actual training and validat
     
 ```
 
-Finally, there is one more part of the code and, coincidentally, it is what would be run first!
+Finally, there is one more part of the code, and coincidentally, it is what would be run first!
 
-The `__main__` part of the code is what sets up the initial parallel environment like number of MPI ranks, the master port and address for our Slurm job, etc. This is necessary to setup proper communication between tasks on Odo (especially when using multiple nodes). The rest of the `main` function prints out the GPUs being used so that we can analyze the comparisons between GPUs at the end of the testing. The last part that is run is a function called `setup` which we defined at the very top of the "Functions" section above. 
+The `__main__` part of the code is what sets up the initial parallel environment, like the number of MPI ranks, the master port and address for our Slurm job, etc. This is necessary to set up proper communication between tasks on Odo (especially when using multiple nodes). The rest of the `main` function prints out the GPUs being used so that we can analyze the comparisons between GPUs at the end of the testing. The last part that is run is a function called `setup`, which we defined at the very top of the "Functions" section above. 
 
 ```python
 if __name__ == "__main__":
@@ -572,7 +572,7 @@ To do this challenge:
     cp ~/hands-on-with-odo/challenges/Python_QML_Basics/submit_qml.sbatch ./submit_qml.sbatch
     ```
 
-1. Use your favorite editor to change the integer following`-n` in `submit_qml.sbatch` to distribute the network over a specific number of tasks (pick an integer in the range from 1 to 8):
+1. Use your favorite editor to change the integer following `-n` in `submit_qml.sbatch` to distribute the network over a specific number of tasks (pick an integer in the range from 1 to 8):
 
     ```bash
     vi submit_qml.sbatch
