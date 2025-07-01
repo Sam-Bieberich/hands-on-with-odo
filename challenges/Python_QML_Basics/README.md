@@ -21,9 +21,9 @@ First, we will unload all the current modules that you may have previously loade
 Assuming you cloned the repository in your home directory:
 
 ```bash
-cd ~/hands-on-with-odo/challenges/Python_QML_Basics
-source ~/hands-on-with-odo/misc_scripts/deactivate_envs.sh
-module reset
+$ cd ~/hands-on-with-odo/challenges/Python_QML_Basics
+$ source ~/hands-on-with-odo/misc_scripts/deactivate_envs.sh
+$ module reset
 ```
 
 The `source deactivate_envs.sh` command is only necessary if you already have existing conda environments active.
@@ -32,24 +32,24 @@ The script unloads all of your previously activated conda environments, and no h
 Next, we will load the GNU compiler module (most Python packages assume GCC), the GPU module:
 
 ```bash
-module load PrgEnv-gnu/8.6.0 
-module load rocm/6.1.3
-module load craype-accel-amd-gfx90a
-module load miniforge3
+$ module load PrgEnv-gnu/8.6.0 
+$ module load rocm/6.1.3
+$ module load craype-accel-amd-gfx90a
+$ module load miniforge3
 ```
 
 We loaded the "base" conda environment, but we need to activate a pre-built conda environment that has PennyLane and PyTorch.
 Due to the specific nature of conda on Odo, we will be using `source activate` instead of `conda activate` to activate our new environment:
 
 ```bash
-source activate /gpfs/wolf2/olcf/stf007/world-shared/9b8/crashcourse_envs/qml-odo
+$ source activate /gpfs/wolf2/olcf/stf007/world-shared/9b8/crashcourse_envs/qml-odo
 ```
 
 The path to the environment should now be displayed in "( )" at the beginning of your terminal lines, which indicates that you are currently using that specific conda environment.
 If you check with `which python3`, you should see that you're properly in the new environment:
 
 ```bash
-which python3
+$ which python3
 /gpfs/wolf2/olcf/stf007/world-shared/9b8/crashcourse_envs/qml-odo/bin/python3
 ```
 
@@ -529,7 +529,7 @@ Once the data is in the correct format, we start the actual training and validat
 
 Finally, there is one more part of the code, and coincidentally, it is what would be run first!
 
-The `__main__` part of the code is what sets up the initial parallel environment, like the number of MPI ranks, the master port and address for our Slurm job, etc. This is necessary to set up proper communication between tasks on Odo (especially when using multiple nodes). The rest of the `main` function prints out the GPUs being used so that we can analyze the comparisons between GPUs at the end of the testing. The last part that is run is a function called `setup`, which we defined at the very top of the "Functions" section above. 
+The `__main__` part of the code is what sets up the initial parallel environment, like the number of MPI ranks, the master port and address for our Slurm job, etc. This is necessary to set up proper communication between tasks on Odo (especially when using multiple nodes). The rest of the `main` function prints out the GPUs being used so that we can analyze the comparisons between GPUs at the end of the testing. The last part that is run is a function called `setup`, which we defined at the very top of the "Functions" section above.
 
 ```python
 if __name__ == "__main__":
@@ -554,6 +554,8 @@ if __name__ == "__main__":
     setup(rank, world_size)
 ```
 
+> Fun fact: Python code living in the `__main__` code-block is run when the script is executed directly (e.g., `python3 script.py`). That section of the code is ignored when the script is used as an external module by a different python script.
+
 Thanks for taking the deep dive into the code. Now to tackle the challenge itself!
 
 ## Running the Challenge
@@ -565,17 +567,17 @@ To do this challenge:
 0. Make sure you copy over the scripts and are in your `/gpfs/wolf2/olcf/PROJECT_ID/scratch/${USER}/qml_test` directory:
 
     ```bash
-    cd /gpfs/wolf2/olcf/trn039/scratch/${USER}/
-    mkdir qml_test
-    cd qml_test
-    cp ~/hands-on-with-odo/challenges/Python_QML_Basics/qml.py ./qml.py
-    cp ~/hands-on-with-odo/challenges/Python_QML_Basics/submit_qml.sbatch ./submit_qml.sbatch
+    $ cd /gpfs/wolf2/olcf/trn039/scratch/${USER}/
+    $ mkdir qml_test
+    $ cd qml_test
+    $ cp ~/hands-on-with-odo/challenges/Python_QML_Basics/qml.py ./qml.py
+    $ cp ~/hands-on-with-odo/challenges/Python_QML_Basics/submit_qml.sbatch ./submit_qml.sbatch
     ```
 
 1. Use your favorite editor to change the integer following `-n` in `submit_qml.sbatch` to distribute the network over a specific number of tasks (pick an integer in the range from 1 to 8):
 
     ```bash
-    vi submit_qml.sbatch
+    $ vi submit_qml.sbatch
     ```
 
     The default `srun` looks like this (note, you'll ONLY have to change the `-n` value):
@@ -587,7 +589,7 @@ To do this challenge:
 2. Submit a job:
 
     ```bash
-    sbatch --export=NONE submit_qml.sbatch
+    $ sbatch --export=NONE submit_qml.sbatch
     ```
 
 3. Look at the statistics printed in your `qml_basics-<JOB_ID>.out` file after the job completes to see the job stats and output. The line you should look for is this message at the bottom of the file:
