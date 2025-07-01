@@ -567,7 +567,7 @@ To do this challenge:
 0. Make sure you copy over the scripts and are in your `/gpfs/wolf2/olcf/PROJECT_ID/scratch/${USER}/qml_test` directory:
 
     ```bash
-    $ cd /gpfs/wolf2/olcf/trn039/scratch/${USER}/
+    $ cd /gpfs/wolf2/olcf/project_id/scratch/${USER}/
     $ mkdir qml_test
     $ cd qml_test
     $ cp ~/hands-on-with-odo/challenges/Python_QML_Basics/qml.py ./qml.py
